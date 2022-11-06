@@ -3,7 +3,11 @@ import pandas as pd
 import win32com.client as win32
 from tkinter import filedialog as fd
 from pathlib import Path 
+from datetime import date
+import datetime
 
+
+d1 = datetime.datetime.now().strftime("%d-%m-%Y %Hh %Mm %Ss")
 
 def clear_tcd(ws):
     for tcd in ws.PivotTables():
@@ -50,11 +54,6 @@ def insert_tcd_field_set_bruts_4B_INV_AZU(tcd):
     #insert data field
     field_values['Palier inventaire'].Orientation = 2
     field_values['Code'].Orientation = 4
-
-
-
-
-
 
 def insert_tcd_field_set_prioritaires(tcd):
     """ blablabla"""
@@ -144,9 +143,7 @@ def autres(file,source,tcd,tcd_2=''):
     REP = Path(__file__).parent
     fichier = Path(file).name
 
-    sauve = REP / fichier
-
-   
+    sauve = REP / f'{d1}_{fichier}'
 
     #create report 
     if 'Bruts' in file:
@@ -160,19 +157,14 @@ def autres(file,source,tcd,tcd_2=''):
     xlApp.Application.Quit() 
 
 
-
-
-
 if __name__ == '__main__':
-
 
     fichier = choix_fichier() 
     if fichier and Path(fichier).exists():
         print(fichier)
         if 'Bruts' in fichier:
             autres(fichier,'Etats Météor Bruts','4 Inv AZU','4B Inv AZU')
-            
-
+           
         elif 'Prioritaires'in fichier:
             autres(fichier,'Etats Météor Prioritaires','Etats Météor Prioritaires_tcd','4B Inv AZU')
             
