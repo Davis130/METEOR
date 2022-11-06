@@ -3,7 +3,10 @@ import pandas as pd
 import win32com.client as win32
 from tkinter import filedialog as fd
 from pathlib import Path 
+from datetime import date
+import datetime
 
+d1 = datetime.datetime.now().strftime("%d-%m-%Y %Hh %Mm %Ss")
 
 def clear_tcd(ws):
     for tcd in ws.PivotTables():
