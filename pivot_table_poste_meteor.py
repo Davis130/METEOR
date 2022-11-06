@@ -81,18 +81,6 @@ def insert_tcd_field_set_prioritaires(tcd):
 def choix_fichier():
     return fd.askopenfilename(initialdir = Path(__file__).parent)
   
-def addpivot(wb,sourcedata,title,filters=(),columns=(),
-             rows=(),sumvalue=(),sortfield=""):
-    """Build a pivot table using the provided source location data
-    and specified fields
-    """
-    ...
-    for fieldlist,fieldc in ((filters ,win32.xlPageField),
-                            (columns  ,win32.xlColumnField),
-                            (rows     ,win32.xlRowField)):
-        for i,val in enumerate(fieldlist):
-            wb.ActiveSheet.PivotTables(tname).PivotFields(val).Orientation = fieldc
-        wb.ActiveSheet.PivotTables(tname).PivotFields(val).Position = i+1
 
 def autres(file,source,tcd,tcd_2=''):
 
