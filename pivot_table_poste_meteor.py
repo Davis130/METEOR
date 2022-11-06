@@ -52,10 +52,6 @@ def insert_tcd_field_set_bruts_4B_INV_AZU(tcd):
     field_values['Code'].Orientation = 4
 
 
-
-
-
-
 def insert_tcd_field_set_prioritaires(tcd):
     """ blablabla"""
     field_rows = {}
@@ -80,7 +76,7 @@ def insert_tcd_field_set_prioritaires(tcd):
     field_values['Code'].Orientation = 4    
 
 def choix_fichier():
-    return fd.askopenfilename(initialdir = __file__)
+    return fd.askopenfilename(initialdir =Path(__file__).parent)
   
 def addpivot(wb,sourcedata,title,filters=(),columns=(),
              rows=(),sumvalue=(),sortfield=""):
